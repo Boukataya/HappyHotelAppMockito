@@ -1,6 +1,6 @@
-package com.mockitotutorial.happyhotel.booking;
+package com.mockitotutorial.happyhotel.booking.services;
 
-public class MailSender {
+public class MailSenderService {
 
     public void sendBookingConfirmation(String bookingId) {
         // TODO Not done yet. John Smith to implement!

@@ -1,4 +1,4 @@
-package com.mockitotutorial.happyhotel.booking;
+package com.mockitotutorial.happyhotel.booking.services;
 
 import com.mockitotutorial.happyhotel.booking.entities.BookingRequest;
 

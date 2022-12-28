@@ -1,5 +1,6 @@
-package com.mockitotutorial.happyhotel.booking;
+package com.mockitotutorial.happyhotel.booking.services;
 
+import com.mockitotutorial.happyhotel.booking.BusinessException;
 import com.mockitotutorial.happyhotel.booking.entities.BookingRequest;
 import com.mockitotutorial.happyhotel.booking.entities.Room;
 

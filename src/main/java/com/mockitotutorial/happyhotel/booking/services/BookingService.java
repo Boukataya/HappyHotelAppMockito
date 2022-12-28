@@ -1,5 +1,7 @@
-package com.mockitotutorial.happyhotel.booking;
+package com.mockitotutorial.happyhotel.booking.services;
 
+import com.mockitotutorial.happyhotel.booking.*;
+import com.mockitotutorial.happyhotel.booking.doa.BookingDAO;
 import com.mockitotutorial.happyhotel.booking.entities.BookingRequest;
 
 import java.time.temporal.ChronoUnit;
@@ -9,7 +11,7 @@ public class BookingService {
     private final PaymentService paymentService;
     private final RoomService roomService;
     private final BookingDAO bookingDAO;
-    private final MailSender mailSender;
+    private final MailSenderService mailSender;
     private final static double BASE_PRICE_USD = 50.0;
 
     public int getAvailablePlaceCount() {
@@ -51,7 +53,7 @@ public class BookingService {
     }
 
     public BookingService(PaymentService paymentService, RoomService roomService, BookingDAO bookingDAO,
-                          MailSender mailSender) {
+                          MailSenderService mailSender) {
         super();
         this.paymentService = paymentService;
         this.roomService = roomService;
