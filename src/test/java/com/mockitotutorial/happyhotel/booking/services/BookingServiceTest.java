@@ -4,9 +4,14 @@ import com.mockitotutorial.happyhotel.booking.BusinessException;
 import com.mockitotutorial.happyhotel.booking.doa.BookingDAO;
 import com.mockitotutorial.happyhotel.booking.entities.BookingRequest;
 import com.mockitotutorial.happyhotel.booking.entities.Room;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -16,25 +21,30 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyDouble;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class BookingServiceTest {
 
+    @InjectMocks
     private BookingService bookingService;
+    @Mock
     private PaymentService paymentServiceMock;
+    @Mock
     private RoomService roomServiceMock;
+    @Mock
     private BookingDAO bookingDAOMock;
+    @Mock
     private MailSenderService mailSenderServiceMock;
 
     @BeforeEach
     void setup() {
-        this.paymentServiceMock = mock(PaymentService.class);
-        this.roomServiceMock = mock(RoomService.class);
-        this.bookingDAOMock = mock(BookingDAO.class);
-        this.mailSenderServiceMock = mock(MailSenderService.class);
+//        this.paymentServiceMock = mock(PaymentService.class);
+//        this.roomServiceMock = mock(RoomService.class);
+//        this.bookingDAOMock = mock(BookingDAO.class);
+//        this.mailSenderServiceMock = mock(MailSenderService.class);
 
-        this.bookingService = new BookingService(paymentServiceMock, roomServiceMock, bookingDAOMock, mailSenderServiceMock);
+        //this.bookingService = new BookingService(paymentServiceMock, roomServiceMock, bookingDAOMock, mailSenderServiceMock);
 
         System.out.println("Mock Default List values is " + roomServiceMock.getAvailableRooms());
         System.out.println("Mock Default String value is " + roomServiceMock.findAvailableRoomId(null));
@@ -52,7 +62,8 @@ class BookingServiceTest {
         // When
         double actual = bookingService.calculatePrice(bookingRequest);
         // Then
-        assertEquals(expected, actual);
+//        assertEquals(expected, actual);
+        Assertions.assertThat(expected).isEqualTo(actual);
 
     }
 
@@ -114,7 +125,6 @@ class BookingServiceTest {
         Executable executable = () -> bookingService.makeBooking(bookingRequest);
         assertThrows(BusinessException.class, executable);
 
-
     }
 
     @Test
@@ -130,6 +140,6 @@ class BookingServiceTest {
         Executable executable = () -> bookingService.makeBooking(bookingRequest);
         assertThrows(BusinessException.class, executable);
 
-
     }
+
 }
