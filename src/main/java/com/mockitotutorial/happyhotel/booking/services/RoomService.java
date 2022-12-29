@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class RoomService {
 
     private final Map<Room, Boolean> roomAvailability;
+
     {
         roomAvailability = new HashMap<>();
         roomAvailability.put(new Room("1.1", 2), true);
@@ -28,7 +29,7 @@ public class RoomService {
                 .orElseThrow(BusinessException::new);
     }
 
-    public List<Room> getAvailableRooms() {
+    public final List<Room> getAvailableRooms() {
         return roomAvailability.entrySet().stream()
                 .filter(entry -> entry.getValue())
                 .map(entry -> entry.getKey())
